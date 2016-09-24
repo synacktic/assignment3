@@ -1,9 +1,8 @@
 /* WORD LADDER Main.java
  * EE422C Project 3 submission by
- * Replace <...> with your actual data.
  * Brian Sutherland
  * bs2433
- * <Student1 5-digit Unique No.>
+ * 16455
  * Michelle Tate
  * mct894
  * 16455
