@@ -43,7 +43,12 @@ public class Main {
 			return;							//stop running the program with no further output
 		}
 		String word2 = kb.next().trim();	//whitespace must be ignored
-
+		
+		if(word1.equals(word2)){
+			System.out.println("a 0-rung word ladder exists between " + word1 + " and " + word2 + ".");
+		}
+		
+		
 		
 	}
 	
