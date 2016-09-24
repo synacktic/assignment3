@@ -36,20 +36,13 @@ public class Main {
 		initialize();
 		
 		// TODO methods to read in words, output ladder
-		
-		System.out.println("Type two 5 letter words with at least one space separating both of them");
-		String word1 = kb.next().trim();	//whitespace must be ignored
-		if (word1.equals("/quit")){
-			return;							//stop running the program with no further output
+		ArrayList<String> wordLadder = parse(kb);
+		if(wordLadder == null){return;}
+		if(wordLadder.get(0).equals(wordLadder.get(1))){
+			System.out.println("a 0-rung word ladder exists between " + wordLadder.get(0) + " and " + wordLadder.get(1) + ".");
 		}
-		String word2 = kb.next().trim();	//whitespace must be ignored
-		
-		if(word1.equals(word2)){
-			System.out.println("a 0-rung word ladder exists between " + word1 + " and " + word2 + ".");
-		}
-		
-		getWordLadderDFS(word1, word2);
-		getWordLadderBFS(word1, word2);
+		getWordLadderDFS(wordLadder.get(0), wordLadder.get(1));
+		getWordLadderBFS(wordLadder.get(0), wordLadder.get(1));
 		
 	}
 	
@@ -65,8 +58,16 @@ public class Main {
 	 * If command is /quit, return empty ArrayList. 
 	 */
 	public static ArrayList<String> parse(Scanner keyboard) {
-		// TO DO
-		return null;
+		ArrayList<String> wordLadder = new ArrayList<String>();
+		System.out.println("Type two 5 letter words with at least one space separating both of them");
+		String word1 = keyboard.next().trim();	//whitespace must be ignored
+		if (word1.equals("/quit")){
+			return null;							//stop running the program with no further output
+		}
+		String word2 = keyboard.next().trim();	//whitespace must be ignored
+		wordLadder.add(word1);
+		wordLadder.add(word2);
+		return wordLadder;
 	}
 	
 	// Returned list should be ordered start to end.  Include start and end.
