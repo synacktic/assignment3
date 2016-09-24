@@ -37,7 +37,7 @@ public class Main {
 		
 		// TODO methods to read in words, output ladder
 		
-		System.out.println("Type two 5 letter words with at least one space separating both of them");
+		System.out.println("Type two 5 letter words with at least one space separating both of them: ");
 		String word1 = kb.next().trim();	//whitespace must be ignored
 		if (word1.equals("/quit")){
 			return;							//stop running the program with no further output
@@ -48,7 +48,7 @@ public class Main {
 			System.out.println("a 0-rung word ladder exists between " + word1 + " and " + word2 + ".");
 		}
 		
-		getWordLadderDFS(word1, word2);
+		//getWordLadderDFS(word1, word2);
 		getWordLadderBFS(word1, word2);
 		
 	}
@@ -76,7 +76,7 @@ public class Main {
 		// TODO some code
 		Set<String> dict = makeDictionary();
 		//DFS(dict);
-		DFS.findLadder(start, end, dict);
+		//DFS.findLadder(start, end, dict);
 		// TODO more code
 		
 		return null; // replace this line later with real return
@@ -86,6 +86,8 @@ public class Main {
 		
 		// TODO some code
 		Set<String> dict = makeDictionary();
+		BFS.findLadder(start, end, dict);
+
 		// TODO more code
 		
 		return null; // replace this line later with real return
