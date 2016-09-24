@@ -48,7 +48,7 @@ public class Main {
 			System.out.println("a 0-rung word ladder exists between " + word1 + " and " + word2 + ".");
 		}
 		
-		//getWordLadderDFS(word1, word2);
+		getWordLadderDFS(word1, word2);
 		getWordLadderBFS(word1, word2);
 		
 	}
@@ -69,17 +69,20 @@ public class Main {
 		return null;
 	}
 	
+	// Returned list should be ordered start to end.  Include start and end.
+	// Return empty list if no ladder.
 	public static ArrayList<String> getWordLadderDFS(String start, String end) {
-		
-		// Returned list should be ordered start to end.  Include start and end.
-		// Return empty list if no ladder.
-		// TODO some code
 		Set<String> dict = makeDictionary();
-		//DFS(dict);
-		//DFS.findLadder(start, end, dict);
-		// TODO more code
+
+		DFS DFSladder = new DFS(dict);
+		ArrayList<String> DFSwordladder = new ArrayList<String>();
+		DFSwordladder.add(start);	//add first word to ladder
+		DFSwordladder = DFSladder.findLadder(start, end, DFSwordladder);
 		
-		return null; // replace this line later with real return
+		if (DFSwordladder == null){
+			return null;		//return empty list if no ladder
+		}
+		return DFSwordladder;	//return ladder if ladder exists
 	}
 	
     public static ArrayList<String> getWordLadderBFS(String start, String end) {
@@ -114,4 +117,17 @@ public class Main {
 	}
 	// TODO
 	// Other private static methods here
+	
+	public static boolean letterDifference(String word1, String word2){
+		int difference = 0;
+		for (int i = 0; i < 5; i++){		//may need to change 5 if they aren't 5 letter words
+			if (word1.indexOf(i) != word2.indexOf(i)){
+				difference +=1;
+				if (difference > 1){
+					return false;
+				}
+			}
+		}
+		return true;	//one letter away
+	}
 }
