@@ -48,7 +48,8 @@ public class Main {
 			System.out.println("a 0-rung word ladder exists between " + word1 + " and " + word2 + ".");
 		}
 		
-		
+		getWordLadderDFS(word1, word2);
+		getWordLadderBFS(word1, word2);
 		
 	}
 	
@@ -74,6 +75,7 @@ public class Main {
 		// Return empty list if no ladder.
 		// TODO some code
 		Set<String> dict = makeDictionary();
+		DFS(dict);
 		DFS.findLadder(start, end, dict);
 		// TODO more code
 		
