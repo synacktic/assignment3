@@ -74,6 +74,7 @@ public class Main {
 		// Return empty list if no ladder.
 		// TODO some code
 		Set<String> dict = makeDictionary();
+		DFS.findLadder(start, end, dict);
 		// TODO more code
 		
 		return null; // replace this line later with real return
