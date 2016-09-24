@@ -74,6 +74,7 @@ public class Main {
 	// Return empty list if no ladder.
 	public static ArrayList<String> getWordLadderDFS(String start, String end) {
 		Set<String> dict = makeDictionary();
+
 		DFS DFSladder = new DFS(dict);
 		ArrayList<String> DFSwordladder = new ArrayList<String>();
 		DFSwordladder.add(start);	//add first word to ladder
@@ -89,6 +90,8 @@ public class Main {
 		
 		// TODO some code
 		Set<String> dict = makeDictionary();
+		BFS.findLadder(start, end, dict);
+
 		// TODO more code
 		
 		return null; // replace this line later with real return
