@@ -4,9 +4,9 @@
  * Brian Sutherland
  * bs2433
  * <Student1 5-digit Unique No.>
- * <Student2 Name>
- * <Student2 EID>
- * <Student2 5-digit Unique No.>
+ * Michelle Tate
+ * mct894
+ * 16455
  * Slip days used: <0>
  * Git URL: https://github.com/synacktic/assignment3.git
  * Fall 2016
