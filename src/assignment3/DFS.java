@@ -44,7 +44,7 @@ public class DFS {
 	public static boolean letterDifference(String word1, String word2){
 		int difference = 0;
 		for (int i = 0; i < 5; i++){		//may need to change 5 if they aren't 5 letter words
-			if (word1.indexOf(i) != word2.indexOf(i)){
+			if (word1.charAt(i) != word2.charAt(i)){
 				difference +=1;
 				if (difference > 1){
 					return false;
