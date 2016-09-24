@@ -13,12 +13,17 @@ public class BFS {
 		System.out.printf("%s\n",adict[0]);
 		int dictCount = 0;
 		while (dictCount < adict.length) {
+			if ( Main.letterDifference(start,adict[dictCount]))  {
+				System.out.printf("%s and %s are just one letter away!\n",start,adict[dictCount]);
+			}
+			
+/*
 			int letterCount = 0;
 			int badletters = 0;
 			while (letterCount < adict[dictCount].length()) {
 				if () { }
 				letterCount++;
-			}
+			}*/
 			dictCount++;
 		}
 		if (dict.contains(start)) {

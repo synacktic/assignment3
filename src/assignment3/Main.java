@@ -1,7 +1,7 @@
 /* WORD LADDER Main.java
  * EE422C Project 3 submission by
  * Brian Sutherland
- * bs2433
+ * bcs2433
  * 16455
  * Michelle Tate
  * mct894
@@ -74,10 +74,10 @@ public class Main {
 	public static ArrayList<String> getWordLadderDFS(String start, String end) {
 		Set<String> dict = makeDictionary();
 
-		DFS DFSladder = new DFS(dict);
+	//	DFS DFSladder = new DFS(dict);
 		ArrayList<String> DFSwordladder = new ArrayList<String>();
 		DFSwordladder.add(start);	//add first word to ladder
-		DFSwordladder = DFSladder.findLadder(start, end, DFSwordladder);
+		//DFSwordladder = DFSladder.findLadder(start, end, DFSwordladder);
 		
 		if (DFSwordladder == null){
 			return null;		//return empty list if no ladder
