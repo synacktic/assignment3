@@ -37,6 +37,15 @@ public class Main {
 		initialize();
 		
 		// TODO methods to read in words, output ladder
+		
+		System.out.println("Type two 5 letter words with at least one space separating both of them");
+		String word1 = kb.next().trim();	//whitespace must be ignored
+		if (word1.equals("/quit")){
+			return;							//stop running the program with no further output
+		}
+		String word2 = kb.next().trim();	//whitespace must be ignored
+
+		
 	}
 	
 	public static void initialize() {
