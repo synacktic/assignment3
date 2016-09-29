@@ -1,7 +1,7 @@
 /* WORD LADDER Main.java
  * EE422C Project 3 submission by
  * Brian Sutherland
- * bs2433
+ * bcs2433
  * 16455
  * Michelle Tate
  * mct894
@@ -42,7 +42,13 @@ public class Main {
 			System.out.println("a 0-rung word ladder exists between " + wordLadder.get(0) + " and " + wordLadder.get(1) + ".");
 		}
 		getWordLadderDFS(wordLadder.get(0), wordLadder.get(1));
-		//getWordLadderBFS(wordLadder.get(0), wordLadder.get(1));
+
+		wordLadder = getWordLadderBFS(wordLadder.get(0), wordLadder.get(1));
+		for (String w: wordLadder) {
+			  System.out.printf("%s\n", w);
+		}
+		//System.out.printf("Done\n");
+		
 	}
 	
 	public static void initialize() {
@@ -68,17 +74,6 @@ public class Main {
 		wordLadder.add(word2);
 		return wordLadder;
 	}
-	
-	
-
-	
-	
-	
-	
-	
-	
-	
-	
 	
 	
 	// Returned list should be ordered start to end.  Include start and end.
@@ -116,9 +111,7 @@ public class Main {
 			System.out.println(DFSwordladder.get(i));
 		}
 		System.out.println();
-		
-		
-		
+		//end of for testing
 		
 		
 		
@@ -126,29 +119,9 @@ public class Main {
 	}
 	
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
     public static ArrayList<String> getWordLadderBFS(String start, String end) {
-		
-		// TODO some code
 		Set<String> dict = makeDictionary();
-		BFS.findLadder(start, end, dict);
-
-		// TODO more code
-		
-		return null; // replace this line later with real return
+		return BFS.findLadder(start, end, dict);
 	}
     
 	public static Set<String>  makeDictionary () {
