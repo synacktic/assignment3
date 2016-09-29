@@ -28,13 +28,16 @@ public class DFS {
 		
 		//base case of one letter away
 		if(findChangedIndex(start, end) != -1){		//-1 means that they are not one letter apart
-			//visitedWords.add(end);
 			DFSwordladder.add(end);
 			return DFSwordladder;
 		}
 		
 		ArrayList<String> currentLayerPossibleWords = findOneLetterDifference(start, prevChangedIndex);	//possible words for next layer
 		if (currentLayerPossibleWords == null){return null;} //this path is a dead end
+//		if(currentLayerPossibleWords.contains(end)){
+//			DFSwordladder.add(end);
+//			return DFSwordladder;
+//		}
 		
 		for(String word : currentLayerPossibleWords){
 				DFSwordladder.add(word);

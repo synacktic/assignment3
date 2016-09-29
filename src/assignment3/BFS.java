@@ -16,7 +16,7 @@ public class BFS {
 			int letterCount = 0;
 			int badletters = 0;
 			while (letterCount < adict[dictCount].length()) {
-				if () { }
+				//if () { }
 				letterCount++;
 			}
 			dictCount++;

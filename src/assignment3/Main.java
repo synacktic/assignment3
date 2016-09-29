@@ -76,6 +76,11 @@ public class Main {
 	
 	
 	
+	
+	
+	
+	
+	
 	// Returned list should be ordered start to end.  Include start and end.
 	// Return empty list if no ladder.
 	public static ArrayList<String> getWordLadderDFS(String start, String end) {
@@ -83,18 +88,38 @@ public class Main {
 		ArrayList<String> DFSwordladder = new ArrayList<String>();
 		DFSwordladder.add(start);	//add first word to ladder
 		DFSwordladder = DFSladder.findLadder(start.toUpperCase(), end.toUpperCase(), DFSwordladder, -1);
-		
-		System.out.println();
-		System.out.println(DFSwordladder);
-		System.out.println();
-
 		if(DFSwordladder == null){
 			return null;		//return empty list if no ladder
 		}
-
+		for(int i = 0; i < DFSwordladder.size(); i++){		//change all words to lower case
+			DFSwordladder.set(i, DFSwordladder.get(i).toLowerCase());
+		}
+		
+		
+		
+		
+		
+		//for testing
 		//move to main
 		System.out.println("a " + (DFSwordladder.size() - 2) + "-rung word ladder exists between " + start + " and " + end + ".");
-		System.out.println(DFSwordladder);		//TODO: need to space right
+		System.out.println();
+		for(int i = 0; i < DFSwordladder.size(); i++){
+			
+			
+			//especially for testing if changes are one letter or not
+			if((i + 1 < DFSwordladder.size()) && letterDifference(DFSwordladder.get(i),DFSwordladder.get(i+1)) == false){
+				System.out.println("FAIL");
+				return null;
+			}
+			
+			
+			System.out.println(DFSwordladder.get(i));
+		}
+		System.out.println();
+		
+		
+		
+		
 		
 		
 		return DFSwordladder;					//return ladder if ladder exists
