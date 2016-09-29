@@ -1,0 +1,14 @@
+EE422C Project 3 (Word Ladder)  Team Plan
+
+Michelle Tate 
+mct894 
+Brian Sutherland
+bcs2433
+Fall 2016
+
+Initially, Michelle Tate did the DFS module and Brian Sutherland did the BFS module.  
+We both sat down together for the initial meeting, to get the project started, and to code the general idea of our methods.
+We then coded our parts individually and tested our parts individally before meeting again to finish debugging and testing.
+
+… Five test cases were written by … and 5 by …
+We spent approximately 4 hours together in the same room.
