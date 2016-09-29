@@ -49,9 +49,7 @@ public class BFS {
 					dictCount++;
 				
 				}
-	       }
-
-		
+	       }		
 		return null;
 	}
 	private static class Node {

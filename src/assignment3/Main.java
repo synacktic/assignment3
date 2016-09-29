@@ -36,12 +36,13 @@ public class Main {
 		initialize();
 		
 		// TODO methods to read in words, output ladder
-		ArrayList<String> wordLadder = parse(kb);
-		if(wordLadder == null){return;}
+		ArrayList<String> wordLadder = parse(kb);		//now has my start word and end word
+		if(wordLadder == null){return;}					//means that the input was "/quit"
 		if(wordLadder.get(0).equals(wordLadder.get(1))){
 			System.out.println("a 0-rung word ladder exists between " + wordLadder.get(0) + " and " + wordLadder.get(1) + ".");
 		}
 		getWordLadderDFS(wordLadder.get(0), wordLadder.get(1));
+
 		wordLadder = getWordLadderBFS(wordLadder.get(0), wordLadder.get(1));
 		for (String w: wordLadder) {
 			  System.out.printf("%s\n", w);
@@ -74,28 +75,53 @@ public class Main {
 		return wordLadder;
 	}
 	
+	
 	// Returned list should be ordered start to end.  Include start and end.
 	// Return empty list if no ladder.
 	public static ArrayList<String> getWordLadderDFS(String start, String end) {
-		Set<String> dict = makeDictionary();
-
-	//	DFS DFSladder = new DFS(dict);
+		DFS DFSladder = new DFS(makeDictionary());			//instantiate
 		ArrayList<String> DFSwordladder = new ArrayList<String>();
 		DFSwordladder.add(start);	//add first word to ladder
-		//DFSwordladder = DFSladder.findLadder(start, end, DFSwordladder);
-		
-		if (DFSwordladder == null){
+		DFSwordladder = DFSladder.findLadder(start.toUpperCase(), end.toUpperCase(), DFSwordladder, -1);
+		if(DFSwordladder == null){
 			return null;		//return empty list if no ladder
 		}
-		return DFSwordladder;	//return ladder if ladder exists
+		for(int i = 0; i < DFSwordladder.size(); i++){		//change all words to lower case
+			DFSwordladder.set(i, DFSwordladder.get(i).toLowerCase());
+		}
+		
+		
+		
+		
+		
+		//for testing
+		//move to main
+		System.out.println("a " + (DFSwordladder.size() - 2) + "-rung word ladder exists between " + start + " and " + end + ".");
+		System.out.println();
+		for(int i = 0; i < DFSwordladder.size(); i++){
+			
+			
+			//especially for testing if changes are one letter or not
+			if((i + 1 < DFSwordladder.size()) && letterDifference(DFSwordladder.get(i),DFSwordladder.get(i+1)) == false){
+				System.out.println("FAIL");
+				return null;
+			}
+			
+			
+			System.out.println(DFSwordladder.get(i));
+		}
+		System.out.println();
+		//end of for testing
+		
+		
+		
+		return DFSwordladder;					//return ladder if ladder exists
 	}
 	
+	
     public static ArrayList<String> getWordLadderBFS(String start, String end) {
-		
 		Set<String> dict = makeDictionary();
 		return BFS.findLadder(start, end, dict);
-
-		
 	}
     
 	public static Set<String>  makeDictionary () {
