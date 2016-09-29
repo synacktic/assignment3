@@ -42,7 +42,8 @@ public class Main {
 			System.out.println("a 0-rung word ladder exists between " + wordLadder.get(0) + " and " + wordLadder.get(1) + ".");
 		}
 		getWordLadderDFS(wordLadder.get(0), wordLadder.get(1));
-		getWordLadderBFS(wordLadder.get(0), wordLadder.get(1));
+		wordLadder = getWordLadderBFS(wordLadder.get(0), wordLadder.get(1));
+		//System.out.printf("Done\n");
 		
 	}
 	
@@ -88,13 +89,10 @@ public class Main {
 	
     public static ArrayList<String> getWordLadderBFS(String start, String end) {
 		
-		// TODO some code
 		Set<String> dict = makeDictionary();
-		BFS.findLadder(start, end, dict);
+		return BFS.findLadder(start, end, dict);
 
-		// TODO more code
 		
-		return null; // replace this line later with real return
 	}
     
 	public static Set<String>  makeDictionary () {
