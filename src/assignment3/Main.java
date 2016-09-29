@@ -43,6 +43,9 @@ public class Main {
 		}
 		getWordLadderDFS(wordLadder.get(0), wordLadder.get(1));
 		wordLadder = getWordLadderBFS(wordLadder.get(0), wordLadder.get(1));
+		for (String w: wordLadder) {
+			  System.out.printf("%s\n", w);
+		}
 		//System.out.printf("Done\n");
 		
 	}
