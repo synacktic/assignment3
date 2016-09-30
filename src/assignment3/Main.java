@@ -42,7 +42,9 @@ public class Main {
 //			System.out.println("a 0-rung word ladder exists between " + keyWords.get(0) + " and " + keyWords.get(1) + ".");
 //		}
 		ArrayList<String> wordLadder;
-		wordLadder = getWordLadderDFS(keyWords.get(0), keyWords.get(1));	
+
+		wordLadder = getWordLadderDFS(keyWords.get(0), keyWords.get(1));
+
 		printLadder(wordLadder);
 		wordLadder = getWordLadderBFS(keyWords.get(0), keyWords.get(1));
 		printLadder(wordLadder);
