@@ -38,11 +38,11 @@ public class Main {
 		// TODO methods to read in words, output ladder
 		ArrayList<String> keyWords = parse(kb);		//now has my start word and end word
 		if(keyWords == null){return;}					//means that the input was "/quit"
-		if(keyWords.get(0).equals(keyWords.get(1))){
-			System.out.println("a 0-rung word ladder exists between " + keyWords.get(0) + " and " + keyWords.get(1) + ".");
-		}
+//		if(keyWords.get(0).equals(keyWords.get(1))){
+//			System.out.println("a 0-rung word ladder exists between " + keyWords.get(0) + " and " + keyWords.get(1) + ".");
+//		}
 		ArrayList<String> wordLadder;
-		wordLadder = getWordLadderDFS(keyWords.get(0), keyWords.get(1));
+		wordLadder = getWordLadderDFS(keyWords.get(0), keyWords.get(1));	
 		printLadder(wordLadder);
 		wordLadder = getWordLadderBFS(keyWords.get(0), keyWords.get(1));
 		printLadder(wordLadder);
@@ -80,8 +80,11 @@ public class Main {
 		ArrayList<String> DFSwordladder = new ArrayList<String>();
 		DFSwordladder.add(start);	//add first word to ladder
 		DFSwordladder = DFSladder.findLadder(start.toUpperCase(), end.toUpperCase(), DFSwordladder, -1);
-		if(DFSwordladder == null){
-			return null;		//return empty list if no ladder
+		if(DFSwordladder == null){			//need to add only start and end words if no ladder so that print works
+			ArrayList<String> DFSwordladder2 = new ArrayList<String>();
+			DFSwordladder2.add(start);
+			DFSwordladder2.add(end);
+			return DFSwordladder2;			//return empty list with only start and end
 		}
 		for(int i = 0; i < DFSwordladder.size(); i++){		//change all words to lower case
 			DFSwordladder.set(i, DFSwordladder.get(i).toLowerCase());
@@ -107,7 +110,14 @@ public class Main {
 	
     public static ArrayList<String> getWordLadderBFS(String start, String end) {
 		Set<String> dict = makeDictionary();
-		return BFS.findLadder(start, end, dict);
+		ArrayList<String> BFSwordladder = BFS.findLadder(start, end, dict);
+		if(BFSwordladder == null){			//need to add only start and end words if no ladder so that print works
+			ArrayList<String> BFSwordladder2 = new ArrayList<String>();
+			BFSwordladder2.add(start);
+			BFSwordladder2.add(end);
+			return BFSwordladder2;			//return empty list with only start and end
+		}
+		return BFSwordladder;
 	}
     
 	public static Set<String>  makeDictionary () {
@@ -127,18 +137,13 @@ public class Main {
 	}
 	
 	public static void printLadder(ArrayList<String> ladder) {
-		if(ladder == null){return;}	//nothing to print
+		if(ladder.size() == 2 && ladder.get(0).equals(ladder.get(1))){		//only start and end are in the word ladder so no ladder
+			System.out.println("no word ladder can be found between " + ladder.get(0) + " and " + ladder.get(ladder.size()-1) + ".");
+			return;		//no need to print the ladder
+		}
 		System.out.println("a " + (ladder.size() - 2) + "-rung word ladder exists between " + ladder.get(0) + " and " + ladder.get(ladder.size()-1) + ".");
 		System.out.println();
 		for(int i = 0; i < ladder.size(); i++){
-
-			//for testing
-//			if((i + 1 < ladder.size()) && letterDifference(ladder.get(i),ladder.get(i+1)) == false){
-//				System.out.println("FAIL");
-//				return;
-//			}
-			//end of testing
-			
 			System.out.println(ladder.get(i));
 		}
 		System.out.println();
