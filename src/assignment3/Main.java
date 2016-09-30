@@ -152,7 +152,6 @@ public class Main {
 			return;		//no need to print the ladder
 		}
 		System.out.println("a " + (ladder.size() - 2) + "-rung word ladder exists between " + ladder.get(0).toLowerCase() + " and " + ladder.get(ladder.size()-1) + ".");
-		System.out.println();
 		for(int i = 0; i < ladder.size(); i++){
 			System.out.println(ladder.get(i));
 		}
