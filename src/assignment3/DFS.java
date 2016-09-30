@@ -1,3 +1,16 @@
+/* WORD LADDER Main.java
+ * EE422C Project 3 submission by
+ * Brian Sutherland
+ * bcs2433
+ * 16455
+ * Michelle Tate
+ * mct894
+ * 16455
+ * Slip days used: <0>
+ * Git URL: https://github.com/synacktic/assignment3.git
+ * Fall 2016
+ */
+
 package assignment3;
 
 import java.util.ArrayList;
@@ -14,10 +27,6 @@ public class DFS {
 		dictOriginal = new ArrayList<String>(dict);
 	}
 	
-	
-	//TO DO: try and reduce the length of the ladder
-	
-	
 	public static ArrayList<String> findLadder(String start, String end, ArrayList<String> DFSwordladder, int prevChangedIndex ){
 		
 		//base case of same start and end word
@@ -33,12 +42,7 @@ public class DFS {
 		}
 		
 		ArrayList<String> currentLayerPossibleWords = findOneLetterDifference(start, prevChangedIndex);	//possible words for next layer
-		if (currentLayerPossibleWords == null){return null;} //this path is a dead end
-//		if(currentLayerPossibleWords.contains(end)){
-//			DFSwordladder.add(end);
-//			return DFSwordladder;
-//		}
-		
+		if (currentLayerPossibleWords == null){return null;} //this path is a dead end		
 		for(String word : currentLayerPossibleWords){
 				DFSwordladder.add(word);
 				int index = findChangedIndex(start, word); //in this case, there will always be a one letter difference
@@ -91,7 +95,6 @@ public class DFS {
 				possibleWords.add(word);	//the current word can be part of this ladder
 				updatingDictionary.remove(word);	//don't want to ever have this word in a lower ladder b/c this is inefficient and produces too long of a ladder
 				alreadyUsedWords.add(word);	//same reason as above
-				//return possibleWords;	//as soon as you find 1 word return
 			}
 		}
 		return possibleWords;
