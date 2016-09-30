@@ -64,11 +64,11 @@ public class Main {
 	public static ArrayList<String> parse(Scanner keyboard) {
 		ArrayList<String> wordLadder = new ArrayList<String>();
 		System.out.println("Type two 5 letter words with at least one space separating both of them");
-		String word1 = keyboard.next().trim();	//whitespace must be ignored
+		String word1 = keyboard.next().trim().toLowerCase();	//whitespace must be ignored
 		if (word1.equals("/quit")){
 			return null;							//stop running the program with no further output
 		}
-		String word2 = keyboard.next().trim();	//whitespace must be ignored
+		String word2 = keyboard.next().trim().toLowerCase();	//whitespace must be ignored
 		wordLadder.add(word1);
 		wordLadder.add(word2);
 		return wordLadder;
@@ -141,17 +141,17 @@ public class Main {
 	public static void printLadder(ArrayList<String> ladder) {
 
 		if(ladder.size() == 2){		//only start and end are in the word ladder so no ladder
-			if(!(ladder.get(0).equals(ladder.get(1)))){	//same word
-				System.out.println("a " + (ladder.size() - 2) + "-rung word ladder exists between " + ladder.get(0).toLowerCase() + " and " + ladder.get(ladder.size()-1).toLowerCase() + ".");
+			if(ladder.get(0).equals(ladder.get(1))){	//same word
+				System.out.println("a " + (ladder.size() - 2) + "-rung word ladder exists between " + ladder.get(0) + " and " + ladder.get(ladder.size()-1) + ".");
 				for(int i = 0; i < ladder.size(); i++){
 					System.out.println(ladder.get(i));
 				}
 				return;
 			}
-			System.out.println("no word ladder can be found between " + ladder.get(0).toLowerCase() + " and " + ladder.get(ladder.size()-1).toLowerCase() + ".");
+			System.out.println("no word ladder can be found between " + ladder.get(0) + " and " + ladder.get(ladder.size()-1) + ".");
 			return;		//no need to print the ladder
 		}
-		System.out.println("a " + (ladder.size() - 2) + "-rung word ladder exists between " + ladder.get(0).toLowerCase() + " and " + ladder.get(ladder.size()-1) + ".");
+		System.out.println("a " + (ladder.size() - 2) + "-rung word ladder exists between " + ladder.get(0) + " and " + ladder.get(ladder.size()-1) + ".");
 		System.out.println();
 		for(int i = 0; i < ladder.size(); i++){
 			System.out.println(ladder.get(i));
