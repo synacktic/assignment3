@@ -6,9 +6,18 @@ Brian Sutherland
 bcs2433
 Fall 2016
 
-Initially, Michelle Tate did the DFS module and Brian Sutherland did the BFS module.  
-We both sat down together for the initial meeting, to get the project started, and to code the general idea of our methods.
-We then coded our parts individually and tested our parts individally before meeting again to finish debugging and testing.
+We both met and sat down together for the initial meeting to get the project started and get a general idea
+of what we wanted to accomplish coding while we were not coding together.  Initially, we decieded that 
+Michelle Tate would do the DFS module and Brian Sutherland would do the BFS module in order to prevent any
+commit, merge, and sync issues.  We worked on these parts separately at first, communicating regularly
+to update each other on the status of our part and to gather ideas on how to better implement our part.
+We implemented some test cases of our own to ensure our methods worked before we met for the second time.
 
-… Five test cases were written by … and 5 by …
-We spent approximately 4 hours together in the same room.
+Once we had our getWordLadderDFS() and getWordLadderBFS() methods working, we met again to further work on
+the unit testing and holistic project testing and debugging.  This resulted in us changing much of the Main
+class methods, and hvaing to rewrite part of our own methods so that we could both use the necessary Main
+methods (such a printLadder()) without any issues arising from one or both of our getWordLadderDFS() 
+and getWordLadderBFS() methods.
+
+Ten test cases were written by Michelle Tate and ten test cases were written by Brian Sutherland.
+We spent approximately 8 hours together in the same room.

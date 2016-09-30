@@ -61,7 +61,11 @@ public class BFS {
 						    ArrayList<String> output = new ArrayList<String>(endNode.distance);
 							while (endNode != null) {
 							    output.add(endNode.word.toLowerCase());
-							    endNode = endNode.parent;
+							    if (endNode.word.equals(endNode.parent.word)) {
+							    	// Don't duplicate last word on 0 rung ladders.
+							    } else {
+							    	endNode = endNode.parent;
+							    }
 							}
 							Collections.reverse(output);
 							return output;
