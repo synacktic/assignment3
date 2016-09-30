@@ -38,9 +38,7 @@ public class Main {
 		// TODO methods to read in words, output ladder
 		ArrayList<String> keyWords = parse(kb);		//now has my start word and end word
 		if(keyWords == null){return;}					//means that the input was "/quit"
-//		if(keyWords.get(0).equals(keyWords.get(1))){
-//			System.out.println("a 0-rung word ladder exists between " + keyWords.get(0) + " and " + keyWords.get(1) + ".");
-//		}
+
 		ArrayList<String> wordLadder;
 
 		wordLadder = getWordLadderDFS(keyWords.get(0), keyWords.get(1));
@@ -92,19 +90,6 @@ public class Main {
 			DFSwordladder.set(i, DFSwordladder.get(i).toLowerCase());
 		}
 		
-		//for testing
-		//move to main
-//		System.out.println("a " + (DFSwordladder.size() - 2) + "-rung word ladder exists between " + start + " and " + end + ".");
-//		System.out.println();
-//		for(int i = 0; i < DFSwordladder.size(); i++){
-//			if((i + 1 < DFSwordladder.size()) && letterDifference(DFSwordladder.get(i),DFSwordladder.get(i+1)) == false){
-//				System.out.println("FAIL");
-//				return null;
-//			}
-//			System.out.println(DFSwordladder.get(i));
-//		}
-//		System.out.println();
-		//end of for testing
 
 		return DFSwordladder;					//return ladder if ladder exists
 	}
@@ -151,7 +136,7 @@ public class Main {
 			System.out.println("no word ladder can be found between " + ladder.get(0) + " and " + ladder.get(ladder.size()-1) + ".");
 			return;		//no need to print the ladder
 		}
-		System.out.println("a " + (ladder.size() - 2) + "-rung word ladder exists between " + ladder.get(0).toLowerCase() + " and " + ladder.get(ladder.size()-1) + ".");
+		System.out.println("a " + (ladder.size() - 2) + "-rung word ladder exists between " + ladder.get(0) + " and " + ladder.get(ladder.size()-1) + ".");
 		for(int i = 0; i < ladder.size(); i++){
 			System.out.println(ladder.get(i));
 		}

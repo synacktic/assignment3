@@ -22,7 +22,13 @@ import java.util.Collections;
 
 public class BFS {
 
-	
+	/**
+	 * 
+	 * @param start is the start of the ladder
+	 * @param end is the end of the ladder
+	 * @param dict is the dictionary to use
+	 * @return is the ladder or null on failure
+	 */
 	public static ArrayList<String> findLadder(String start, String end, Set<String> dict){
 		
 		if (start.equals(end)) {
@@ -53,15 +59,12 @@ public class BFS {
 						queue.add(addNode);
 
 						if ( Main.letterDifference(end,adict[dictCount])) {
-							//System.out.printf("%s and %s are just one letter away!\n",end,adict[dictCount]);
-						    //System.out.printf("Ladder has been found:\n ");
-						    //System.out.printf("%s\n",end);
 						    Node endNode = new Node(addNode,end);
 							queue.add(endNode);
 						    ArrayList<String> output = new ArrayList<String>(endNode.distance);
 							while (endNode != null) {
 							    output.add(endNode.word.toLowerCase());
-							    if (endNode.word.equals(endNode.parent.word)) {
+							    if (endNode.parent != null && endNode.word.equals(endNode.parent.word)) {
 							    	// Don't duplicate last word on 0 rung ladders.
 							    } else {
 							    	endNode = endNode.parent;
@@ -78,15 +81,20 @@ public class BFS {
 	       }		
 		return null;
 	}
+	/**
+	 * 
+	 * BFS Nodes
+	 *
+	 */
 	private static class Node {
 
-		public String word;
-		public Node parent;
-		public int distance;
+		public String word; // The word being stored
+		public Node parent; // The parent that led to this word
+		public int distance; // the distance from start to here
 
-		public Node(Node newParent, String newWord) {
-			word = newWord;
-			parent = newParent;
+		public Node(Node parent, String word) {
+			this.word = word;
+			this.parent = parent;
 			if (parent == null) {
 				distance = 0;
 			} else {
