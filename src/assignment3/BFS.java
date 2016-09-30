@@ -27,12 +27,18 @@ public class BFS {
 		String[] adict;
 		start = start.toUpperCase();
 		end = end.toUpperCase();
+		if (start.equals(end)) {
+			ArrayList<String> output = new ArrayList<String>(2);
+			output.add(start);
+			output.add(end);
+			return output;
+		}
 		adict = dict.toArray(new String[0]);
 		LinkedList<Node> queue = new LinkedList<Node>();
-	        Node startNode = new Node(null,start);
-	        queue.add(startNode);
-	   		int found = 0;
-
+        Node startNode = new Node(null,start);
+        queue.add(startNode);
+   		int found = 0;
+   		
 	       while (queue.size() != 0)
 	       {
 	            Node currNode = queue.remove();
