@@ -139,8 +139,16 @@ public class Main {
 	}
 	
 	public static void printLadder(ArrayList<String> ladder) {
-		if(ladder.size() == 2 && ladder.get(0).equals(ladder.get(1))){		//only start and end are in the word ladder so no ladder
-			System.out.println("no word ladder can be found between " + ladder.get(0).toLowerCase() + " and " + ladder.get(ladder.size()-1).toLowerCase() + ".");
+
+		if(ladder.size() == 2){		//only start and end are in the word ladder so no ladder
+			if(!(ladder.get(0).equals(ladder.get(1)))){	//same word
+				System.out.println("a " + (ladder.size() - 2) + "-rung word ladder exists between " + ladder.get(0).toLowerCase() + " and " + ladder.get(ladder.size()-1).toLowerCase() + ".");
+				for(int i = 0; i < ladder.size(); i++){
+					System.out.println(ladder.get(i));
+				}
+				return;
+			}
+			System.out.println("no word ladder can be found between " + ladder.get(0) + " and " + ladder.get(ladder.size()-1) + ".");
 			return;		//no need to print the ladder
 		}
 		System.out.println("a " + (ladder.size() - 2) + "-rung word ladder exists between " + ladder.get(0) + " and " + ladder.get(ladder.size()-1) + ".");
