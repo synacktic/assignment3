@@ -41,18 +41,11 @@ public class Main {
 		if(keyWords.get(0).equals(keyWords.get(1))){
 			System.out.println("a 0-rung word ladder exists between " + keyWords.get(0) + " and " + keyWords.get(1) + ".");
 		}
-		getWordLadderDFS(keyWords.get(0), keyWords.get(1));
 		ArrayList<String> wordLadder;
 		wordLadder = getWordLadderDFS(keyWords.get(0), keyWords.get(1));
-		for (String w: wordLadder) {
-			  System.out.printf("%s\n", w);
-		}
+		printLadder(wordLadder);
 		wordLadder = getWordLadderBFS(keyWords.get(0), keyWords.get(1));
-		for (String w: wordLadder) {
-			  System.out.printf("%s\n", w);
-		}
-		//System.out.printf("Done\n");
-		
+		printLadder(wordLadder);
 	}
 	
 	public static void initialize() {
@@ -94,31 +87,20 @@ public class Main {
 			DFSwordladder.set(i, DFSwordladder.get(i).toLowerCase());
 		}
 		
-		
-		
-		
-		
 		//for testing
 		//move to main
-		System.out.println("a " + (DFSwordladder.size() - 2) + "-rung word ladder exists between " + start + " and " + end + ".");
-		System.out.println();
-		for(int i = 0; i < DFSwordladder.size(); i++){
-			
-			
-			//especially for testing if changes are one letter or not
-			if((i + 1 < DFSwordladder.size()) && letterDifference(DFSwordladder.get(i),DFSwordladder.get(i+1)) == false){
-				System.out.println("FAIL");
-				return null;
-			}
-			
-			
-			System.out.println(DFSwordladder.get(i));
-		}
-		System.out.println();
+//		System.out.println("a " + (DFSwordladder.size() - 2) + "-rung word ladder exists between " + start + " and " + end + ".");
+//		System.out.println();
+//		for(int i = 0; i < DFSwordladder.size(); i++){
+//			if((i + 1 < DFSwordladder.size()) && letterDifference(DFSwordladder.get(i),DFSwordladder.get(i+1)) == false){
+//				System.out.println("FAIL");
+//				return null;
+//			}
+//			System.out.println(DFSwordladder.get(i));
+//		}
+//		System.out.println();
 		//end of for testing
-		
-		
-		
+
 		return DFSwordladder;					//return ladder if ladder exists
 	}
 	
@@ -145,8 +127,23 @@ public class Main {
 	}
 	
 	public static void printLadder(ArrayList<String> ladder) {
-		
+		if(ladder == null){return;}	//nothing to print
+		System.out.println("a " + (ladder.size() - 2) + "-rung word ladder exists between " + ladder.get(0) + " and " + ladder.get(ladder.size()-1) + ".");
+		System.out.println();
+		for(int i = 0; i < ladder.size(); i++){
+
+			//for testing
+//			if((i + 1 < ladder.size()) && letterDifference(ladder.get(i),ladder.get(i+1)) == false){
+//				System.out.println("FAIL");
+//				return;
+//			}
+			//end of testing
+			
+			System.out.println(ladder.get(i));
+		}
+		System.out.println();
 	}
+	
 	// TODO
 	// Other private static methods here
 	

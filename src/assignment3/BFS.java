@@ -1,3 +1,16 @@
+/* WORD LADDER Main.java
+ * EE422C Project 3 submission by
+ * Brian Sutherland
+ * bcs2433
+ * 16455
+ * Michelle Tate
+ * mct894
+ * 16455
+ * Slip days used: <0>
+ * Git URL: https://github.com/synacktic/assignment3.git
+ * Fall 2016
+ */
+
 package assignment3;
 
 import java.util.ArrayList;
