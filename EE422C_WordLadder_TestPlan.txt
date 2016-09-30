@@ -18,17 +18,21 @@ at a time from one word to the next.  For other test cases, we sent multiple var
 (the start and end word) to the getWordLadderDFS() and getWordLadderBFS() manually.
 
 We covered:
-	start word:	end word:		expected output:
-	smart		start			should print 0-rung ladder
-	smart 		smart			should print a 0-rung ladder		should not be tested
-	smart 		yyyyy			should print no ladder exists
-	smart 		money			should give some ladder
-	xxxxx 		yyyyy			should print no ladder exists
+	start word:	end word:		expected output:			DFS:	BFS:
+	smart		start			should print 0-rung ladder		0	0
+	smart 		smart			should print a 0-rung ladder		0	0	should not be tested
+	smart 		yyyyy			should print no ladder exists		N/A	N/A
+	smart 		money			should give some x-rung ladder		884	9
+	xxxxx 		yyyyy			should print no ladder exists		N/A	N/A
+	bumps		allee			should print no ladder exists		N/A	N/A
+	homed		hooky			should print some x-rung ladder		62	2
+	husky		bawls			should print some x-rung ladder		254	5
 
 We did not cover:
-	N/A - covered everything that we thought we needed to cover
+	We did not attempt different words that were not five characters long.
+	We did not attepmt two words that were outside of the requirement range.
 
-1. 
+1. JUNIT Test
 a) checkLetterDifference
 b) What feature does the test cover – 1-2 phrases or sentences.
 	Checks for correct printing of a any sized ladder by ensuring that moving from one rung in the
