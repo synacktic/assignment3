@@ -6,30 +6,39 @@ Brian Sutherland
 bcs2433
 Fall 2016
 
-Test plan summary What was your goal, methodology, and conclusion?  1 paragraph.  Example:
-Did you use JUNIT?  Did you test modules or the whole thing all at once?  What areas 
-did you feel you covered in your final test suite?  What did you not cover?  
 
 The testing goal was to ensure that each method within the DFS and BFS class worked correctly as individual 
-units, as well as to test if the DFS and BFS worked as a whole.  Our methodology was to individually test
+units, as well as worked well as a whole.  Our methodology was to individually test
 each separate method within the DFS and BFS classes by feeding the methods required inputs and evaluating if
 the methods had the desired/expected outputs.  Therefore, we testing each module individually.  After we
 ensured that each individual module performed as expected, we moved onto testing the program as a whole.
 
+We used JUNIT for some of the test cases to ensure that our word ladders were not hopping more than one letter
+at a time from one word to the next.  For other test cases, we sent multiple variations of the two word input
+(the start and end word) to the getWordLadderDFS() and getWordLadderBFS() manually.
+
 We covered:
+	start word:	end word:		expected output:
+	smart		start			should print 0-rung ladder
+	smart 		smart			should print a 0-rung ladder		should not be tested
+	smart 		yyyyy			should print no ladder exists
+	smart 		money			should give some ladder
+	xxxxx 		yyyyy			should print no ladder exists
 
 We did not cover:
-
+	N/A - covered everything that we thought we needed to cover
 
 1. 
-a) Test name (LONG_LADDER_DFS)
+a) checkLetterDifference
 b) What feature does the test cover – 1-2 phrases or sentences.
-	Checks for correct printing of a long ladder of over XXX words.
+	Checks for correct printing of a any sized ladder by ensuring that moving from one rung in the
+	ladder to the next rung in the ladder always had exactly 1 letter change.
 c) Set up for the test – initialization.
-	None.
+	Declared start and end word to send to the getWordLadderDFS() and getWordLadderBFS().
+	Had a boolean flag that was initialized to true.  This flag was set to false if the
+	letter difference from one run to the next rung was ever greater than one.
 d) Expected output for a good module.
-	Ladder between XXX and YYY.  Ladder checked for duplicate words.
+	Ladder between start word and end word with no ladder hops of more than a one letter difference.
 e) The pass/fail criterion for the test.
-	No stack overflow, ladder has no duplicates.  Ladder correct, as checked by 'ladder checker'.
-f) Any comments, if any.
-	Test is expected to run in 2 seconds or less.
+	No stack overflow, ladder had no multiple letter changes from one rung to the next rung.
+

@@ -20,8 +20,10 @@ public class Main {
 	
 	// static variables and constants only here.
 	
+	/**
+	  * This method is the main method of the whole Word Ladder program.
+	  */
 	public static void main(String[] args) throws Exception {
-		
 		Scanner kb;	// input Scanner for commands
 		PrintStream ps;	// output file
 		// If arguments are specified, read/write from/to files instead of Std IO.
@@ -35,24 +37,27 @@ public class Main {
 		}
 		initialize();
 		
-		// TODO methods to read in words, output ladder
 		ArrayList<String> keyWords = parse(kb);		//now has my start word and end word
 		if(keyWords == null){return;}					//means that the input was "/quit"
-
 		ArrayList<String> wordLadder;
-
 		wordLadder = getWordLadderDFS(keyWords.get(0), keyWords.get(1));
-
 		printLadder(wordLadder);
 		wordLadder = getWordLadderBFS(keyWords.get(0), keyWords.get(1));
 		printLadder(wordLadder);
 	}
 	
+	
+	/**
+	  * This method initializes the variables that we need.
+	  * @param no parameters
+	  * @return nothing to return
+	  */
 	public static void initialize() {
 		// initialize your static variables or constants here.
 		// We will call this method before running our JUNIT tests.  So call it 
 		// only once at the start of main.
 	}
+	
 	
 	/**
 	 * @param keyboard Scanner connected to System.in
@@ -73,8 +78,12 @@ public class Main {
 	}
 	
 	
-	// Returned list should be ordered start to end.  Include start and end.
-	// Return empty list if no ladder.
+	/**
+	  * This method finds the ladder using BFS.
+	  * @param start is the beginning of the ladder
+	  * @param end is the end of the ladder
+	  * @return the word ladder from start to end word with or without rungs in between
+	  */
 	public static ArrayList<String> getWordLadderDFS(String start, String end) {
 		DFS DFSladder = new DFS(makeDictionary());			//instantiate
 		ArrayList<String> DFSwordladder = new ArrayList<String>();
@@ -89,12 +98,16 @@ public class Main {
 		for(int i = 0; i < DFSwordladder.size(); i++){		//change all words to lower case
 			DFSwordladder.set(i, DFSwordladder.get(i).toLowerCase());
 		}
-		
-
 		return DFSwordladder;					//return ladder if ladder exists
 	}
 	
 	
+	/**
+	  * This method finds the ladder using BFS.
+	  * @param start is the beginning of the ladder
+	  * @param end is the end of the ladder
+	  * @return the word ladder from start to end word with or without rungs in between
+	  */
     public static ArrayList<String> getWordLadderBFS(String start, String end) {
 		Set<String> dict = makeDictionary();
 		ArrayList<String> BFSwordladder = BFS.findLadder(start, end, dict);
@@ -107,6 +120,12 @@ public class Main {
 		return BFSwordladder;
 	}
     
+    
+	/**
+	  * This method was given to use and makes our dictionary.
+	  * @param no parameters
+	  * @return the dictionary
+	  */
 	public static Set<String>  makeDictionary () {
 		Set<String> words = new HashSet<String>();
 		Scanner infile = null;
@@ -123,6 +142,12 @@ public class Main {
 		return words;
 	}
 	
+	
+	/**
+	  * This method prints how many rungs the ladder contains and prints the ladder itself.
+	  * @param ladder is the ladder that my getWordLadderDFS() or getWordLadderBFS() method returned
+	  * @return nothing to return
+	  */
 	public static void printLadder(ArrayList<String> ladder) {
 
 		if(ladder.size() == 2){		//only start and end are in the word ladder so no ladder
@@ -142,10 +167,14 @@ public class Main {
 		}
 		System.out.println();
 	}
+
 	
-	// TODO
-	// Other private static methods here
-	
+	/**
+	  * This method finds how many letters are different from word1 to word2.
+	  * @param word1 is the beginning of the ladder
+	  * @param word2 is the end of the ladder
+	  * @return true if there is only one letter difference, false if there is more than one letter different
+	  */
 	public static boolean letterDifference(String word1, String word2){
 		int difference = 0;
 		for (int i = 0; i < 5; i++){		//may need to change 5 if they aren't 5 letter words
