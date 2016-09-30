@@ -12,6 +12,8 @@ public class BFS {
 	
 	public static ArrayList<String> findLadder(String start, String end, Set<String> dict){
 		String[] adict;
+		start = start.toUpperCase();
+		end = end.toUpperCase();
 		adict = dict.toArray(new String[0]);
 		LinkedList<Node> queue = new LinkedList<Node>();
 	        Node startNode = new Node(null,start);
@@ -38,7 +40,7 @@ public class BFS {
 							queue.add(endNode);
 						    ArrayList<String> output = new ArrayList<String>(endNode.distance);
 							while (endNode != null) {
-							    output.add(endNode.word);
+							    output.add(endNode.word.toLowerCase());
 							    endNode = endNode.parent;
 							}
 							Collections.reverse(output);

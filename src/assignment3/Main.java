@@ -41,12 +41,11 @@ public class Main {
 		if(keyWords.get(0).equals(keyWords.get(1))){
 			System.out.println("a 0-rung word ladder exists between " + keyWords.get(0) + " and " + keyWords.get(1) + ".");
 		}
-		getWordLadderDFS(keyWords.get(0), keyWords.get(1));
 		ArrayList<String> wordLadder;
-		wordLadder = getWordLadderDFS(keyWords.get(0), keyWords.get(1));
-		for (String w: wordLadder) {
-			  System.out.printf("%s\n", w);
-		}
+		//wordLadder = getWordLadderDFS(keyWords.get(0), keyWords.get(1));
+		//for (String w: wordLadder) {
+		//	  System.out.printf("%s\n", w);
+		//}
 		wordLadder = getWordLadderBFS(keyWords.get(0), keyWords.get(1));
 		for (String w: wordLadder) {
 			  System.out.printf("%s\n", w);
