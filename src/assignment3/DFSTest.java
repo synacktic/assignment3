@@ -15,11 +15,11 @@ public class DFSTest {
 		//smart smart			should print a 0-rung ladder		should not be tested
 		//smart yyyyy			should print no ladder exists
 		//smart money			should give some ladder
-		
+		//xxxxx yyyyy			should print no ladder exists
 		
 		ArrayList<String> DFSwordLadder = Main.getWordLadderDFS("smart", "start");
-		if(DFSwordLadder == null)
-		fail("Not yet implemented");
+		//if(DFSwordLadder == null)
+		//fail("Not yet implemented");
 
 		boolean flag = true;
 		for(int i = 0; i < DFSwordLadder.size() - 1; i++){

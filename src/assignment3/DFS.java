@@ -22,11 +22,24 @@ public class DFS {
 	static ArrayList<String> alreadyUsedWords = new ArrayList<String>();
 
 	
+	/**
+	  * This is the DFS class constructor
+	  * @param dictionary is used to create my own copy of the dictionary
+	  */
 	DFS(java.util.Set<String> dict){
 		updatingDictionary = new ArrayList<String>(dict);
 		dictOriginal = new ArrayList<String>(dict);
 	}
 	
+	
+	/**
+	  * This method finds the ladder using DFS.
+	  * @param start is the beginning of the ladder
+	  * @param end is the end of the ladder
+	  * @param DFSwordLadder stores the rungs in my ladder
+	  * @param prevChangedIndex tells me which index I should not change during this recursive call
+	  * @return the word ladder from start to end word or returns null if no ladder exists
+	  */
 	public static ArrayList<String> findLadder(String start, String end, ArrayList<String> DFSwordladder, int prevChangedIndex ){
 		
 		//base case of same start and end word
@@ -44,19 +57,25 @@ public class DFS {
 		ArrayList<String> currentLayerPossibleWords = findOneLetterDifference(start, prevChangedIndex);	//possible words for next layer
 		if (currentLayerPossibleWords == null){return null;} //this path is a dead end		
 		for(String word : currentLayerPossibleWords){
-				DFSwordladder.add(word);
-				int index = findChangedIndex(start, word); //in this case, there will always be a one letter difference
-				ArrayList<String> nextLayerPossibleWords = findLadder(word, end, DFSwordladder, index);
-				if (nextLayerPossibleWords == null){
-					DFSwordladder.remove(word);
-					continue;
-				}
-				return nextLayerPossibleWords;
+			DFSwordladder.add(word);
+			int index = findChangedIndex(start, word); //in this case, there will always be a one letter difference
+			ArrayList<String> nextLayerPossibleWords = findLadder(word, end, DFSwordladder, index);
+			if (nextLayerPossibleWords == null){
+				DFSwordladder.remove(word);
+				continue;
+			}
+			return nextLayerPossibleWords;
 		}
 		return null;
 	}
-
-
+	
+	
+	/**
+	  * This method finds the currently changed index of the previous word to the new word I am about to add to the word ladder.
+	  * @param start is the beginning of the ladder
+	  * @param end is the end of the ladder
+	  * @return the index of the previously changed character
+	  */
 	public static int findChangedIndex(String start, String newWord){
 		char[] startWordChar = start.toCharArray();
 		char[] newWordChar = newWord.toCharArray();
@@ -73,8 +92,13 @@ public class DFS {
 
 	}
 
-
-	//need to change a different letter index than the one I previously changed
+	
+	/**
+	  * This method finds the list of words that my current word can change to and doesn't allow me to change the index that was previously changed.
+	  * @param start is the beginning of the ladder
+	  * @param dontChangeThisIndex tells me which index of the 5-letter word I can not change during this call
+	  * @return the list of possible next words that my current word can change into
+	  */
 	protected static ArrayList<String> findOneLetterDifference(String start, int dontChangeThisIndex){
 		ArrayList<String> possibleWords = new ArrayList<String>();
 		for (String word : dictOriginal){
