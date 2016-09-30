@@ -24,15 +24,16 @@ public class BFS {
 
 	
 	public static ArrayList<String> findLadder(String start, String end, Set<String> dict){
-		String[] adict;
-		start = start.toUpperCase();
-		end = end.toUpperCase();
+		
 		if (start.equals(end)) {
 			ArrayList<String> output = new ArrayList<String>(2);
 			output.add(start);
 			output.add(end);
 			return output;
 		}
+		String[] adict;
+		start = start.toUpperCase();
+		end = end.toUpperCase();
 		adict = dict.toArray(new String[0]);
 		LinkedList<Node> queue = new LinkedList<Node>();
         Node startNode = new Node(null,start);
