@@ -36,14 +36,18 @@ public class Main {
 		initialize();
 		
 		// TODO methods to read in words, output ladder
-		ArrayList<String> wordLadder = parse(kb);		//now has my start word and end word
-		if(wordLadder == null){return;}					//means that the input was "/quit"
-		if(wordLadder.get(0).equals(wordLadder.get(1))){
-			System.out.println("a 0-rung word ladder exists between " + wordLadder.get(0) + " and " + wordLadder.get(1) + ".");
+		ArrayList<String> keyWords = parse(kb);		//now has my start word and end word
+		if(keyWords == null){return;}					//means that the input was "/quit"
+		if(keyWords.get(0).equals(keyWords.get(1))){
+			System.out.println("a 0-rung word ladder exists between " + keyWords.get(0) + " and " + keyWords.get(1) + ".");
 		}
-		getWordLadderDFS(wordLadder.get(0), wordLadder.get(1));
-
-		wordLadder = getWordLadderBFS(wordLadder.get(0), wordLadder.get(1));
+		getWordLadderDFS(keyWords.get(0), keyWords.get(1));
+		ArrayList<String> wordLadder;
+		wordLadder = getWordLadderDFS(keyWords.get(0), keyWords.get(1));
+		for (String w: wordLadder) {
+			  System.out.printf("%s\n", w);
+		}
+		wordLadder = getWordLadderBFS(keyWords.get(0), keyWords.get(1));
 		for (String w: wordLadder) {
 			  System.out.printf("%s\n", w);
 		}
