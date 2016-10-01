@@ -19,8 +19,8 @@ import java.io.*;
 public class Main {
 	
 	// static variables and constants only here.
-	static String start;
-	static String end;
+	static String start = null;
+	static String end = null;
 	
 	/**
 	  * This method is the main method of the whole Word Ladder program.
@@ -38,7 +38,7 @@ public class Main {
 			ps = System.out;			// default to Stdout
 		}
 		initialize();
-		
+				
 		ArrayList<String> keyWords = parse(kb);		//now has my start word and end word
 		if(keyWords == null){return;}					//means that the input was "/quit"
 		ArrayList<String> wordLadder;
@@ -187,6 +187,10 @@ public class Main {
 	  */
 	public static void printLadder(ArrayList<String> ladder) {
 		if(ladder.isEmpty()){		//null ladder
+			if(start == null && end == null){
+				System.out.println("no word ladder can be found because no words have been typed and parse wasn't called.");
+				return;
+			}
 			if(letterDifference(start, end)){		//one letter away
 				System.out.println("a 0-rung word ladder exists between " + start + " and " + end + ".");
 				System.out.println(start);
