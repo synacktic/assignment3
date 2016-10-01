@@ -76,7 +76,7 @@ public class DFS {
 	  * @param end is the end of the ladder
 	  * @return the index of the previously changed character
 	  */
-	public static int findChangedIndex(String start, String newWord){
+	private static int findChangedIndex(String start, String newWord){
 		char[] startWordChar = start.toCharArray();
 		char[] newWordChar = newWord.toCharArray();
 		int difference = 0;
@@ -99,7 +99,7 @@ public class DFS {
 	  * @param dontChangeThisIndex tells me which index of the 5-letter word I can not change during this call
 	  * @return the list of possible next words that my current word can change into
 	  */
-	protected static ArrayList<String> findOneLetterDifference(String start, int dontChangeThisIndex){
+	private static ArrayList<String> findOneLetterDifference(String start, int dontChangeThisIndex){
 		ArrayList<String> possibleWords = new ArrayList<String>();
 		for (String word : dictOriginal){
 			char[] startWordChar = start.toCharArray();

@@ -19,6 +19,8 @@ import java.io.*;
 public class Main {
 	
 	// static variables and constants only here.
+	static String start;
+	static String end;
 	
 	/**
 	  * This method is the main method of the whole Word Ladder program.
@@ -69,9 +71,11 @@ public class Main {
 		System.out.println("Type two 5 letter words with at least one space separating both of them");
 		String word1 = keyboard.next().trim().toLowerCase();	//whitespace must be ignored
 		if (word1.equals("/quit")){
-			return null;							//stop running the program with no further output
+			System.exit(0);;							//stop running the program with no further output
 		}
 		String word2 = keyboard.next().trim().toLowerCase();	//whitespace must be ignored
+		start = word1;		//set static variable
+		end = word2;		//set static variable	
 		wordLadder.add(word1);
 		wordLadder.add(word2);
 		return wordLadder;
@@ -86,18 +90,42 @@ public class Main {
 	  */
 	public static ArrayList<String> getWordLadderDFS(String start, String end) {
 		DFS DFSladder = new DFS(makeDictionary());			//instantiate
+		if(letterDifference(start,end)){
+			return new ArrayList<String>();	//return an empty ArrayList<String>
+		}
 		ArrayList<String> DFSwordladder = new ArrayList<String>();
 		DFSwordladder.add(start);	//add first word to ladder
 		DFSwordladder = DFSladder.findLadder(start.toUpperCase(), end.toUpperCase(), DFSwordladder, -1);
-		if(DFSwordladder == null){			//need to add only start and end words if no ladder so that print works
-			ArrayList<String> DFSwordladder2 = new ArrayList<String>();
-			DFSwordladder2.add(start);
-			DFSwordladder2.add(end);
-			return DFSwordladder2;			//return empty list with only start and end
+//		if(DFSwordladder == null){			//need to add only start and end words if no ladder so that print works
+//			ArrayList<String> DFSwordladder2 = new ArrayList<String>();
+//			DFSwordladder2.add(start);
+//			DFSwordladder2.add(end);
+//			return DFSwordladder2;			//return empty list with only start and end
+//		}
+		if(DFSwordladder == null){
+			return new ArrayList<String>();	//return an empty ArrayList<String>
 		}
+		if(DFSwordladder.isEmpty() || DFSwordladder.size() == 2){
+			return new ArrayList<String>();	//return an empty ArrayList<String>
+		}
+		
 		for(int i = 0; i < DFSwordladder.size(); i++){		//change all words to lower case
 			DFSwordladder.set(i, DFSwordladder.get(i).toLowerCase());
 		}
+		
+		
+		
+		//for testing
+//		for(int i = 0; i < DFSwordladder.size() - 1; i++){
+//			if(letterDifference(DFSwordladder.get(i),DFSwordladder.get(i+1)) == false){
+//				System.out.println("FAIL");
+//				System.out.println(DFSwordladder.get(i));
+//				System.out.println(DFSwordladder.get(i+1));
+//				break;
+//			}
+//		}
+		
+		
 		return DFSwordladder;					//return ladder if ladder exists
 	}
 	
@@ -110,12 +138,21 @@ public class Main {
 	  */
     public static ArrayList<String> getWordLadderBFS(String start, String end) {
 		Set<String> dict = makeDictionary();
+		if(letterDifference(start,end)){
+			return new ArrayList<String>();	//return an empty ArrayList<String>
+		}
 		ArrayList<String> BFSwordladder = BFS.findLadder(start, end, dict);
-		if(BFSwordladder == null){			//need to add only start and end words if no ladder so that print works
-			ArrayList<String> BFSwordladder2 = new ArrayList<String>();
-			BFSwordladder2.add(start);
-			BFSwordladder2.add(end);
-			return BFSwordladder2;			//return empty list with only start and end
+//		if(BFSwordladder == null){			//need to add only start and end words if no ladder so that print works
+//			ArrayList<String> BFSwordladder2 = new ArrayList<String>();
+//			BFSwordladder2.add(start);
+//			BFSwordladder2.add(end);
+//			return BFSwordladder2;			//return empty list with only start and end
+//		}
+		if(BFSwordladder == null){
+			return new ArrayList<String>();	//return an empty ArrayList<String>
+		}
+		if(BFSwordladder.isEmpty() || BFSwordladder.size() == 2){
+			return new ArrayList<String>();	//return an empty ArrayList<String>
 		}
 		return BFSwordladder;
 	}
@@ -149,18 +186,33 @@ public class Main {
 	  * @return nothing to return
 	  */
 	public static void printLadder(ArrayList<String> ladder) {
-
-		if(ladder.size() == 2){		//only start and end are in the word ladder so no ladder
-			if(ladder.get(0).equals(ladder.get(1)) || letterDifference(ladder.get(0),ladder.get(1))){	//same word
-				System.out.println("a " + (ladder.size() - 2) + "-rung word ladder exists between " + ladder.get(0) + " and " + ladder.get(ladder.size()-1) + ".");
-				for(int i = 0; i < ladder.size(); i++){
-					System.out.println(ladder.get(i));
-				}
+		if(ladder.isEmpty()){		//null ladder
+			if(letterDifference(start, end)){		//one letter away
+				System.out.println("a 0-rung word ladder exists between " + start + " and " + end + ".");
+				System.out.println(start);
+				System.out.println(end);
 				return;
 			}
-			System.out.println("no word ladder can be found between " + ladder.get(0) + " and " + ladder.get(ladder.size()-1) + ".");
-			return;		//no need to print the ladder
+			else{	//start and end not one letter away so no word ladder
+				System.out.println("no word ladder can be found between " + start + " and " + end + ".");
+				return;
+			}
 		}
+		
+		
+//		if(ladder.size() == 2){		//only start and end are in the word ladder so no ladder
+//			if(ladder.get(0).equals(ladder.get(1)) || letterDifference(ladder.get(0),ladder.get(1))){	//same word
+//				System.out.println("a " + (ladder.size() - 2) + "-rung word ladder exists between " + ladder.get(0) + " and " + ladder.get(ladder.size()-1) + ".");
+//				for(int i = 0; i < ladder.size(); i++){
+//					System.out.println(ladder.get(i));
+//				}
+//				return;
+//			}
+//			System.out.println("no word ladder can be found between " + ladder.get(0) + " and " + ladder.get(ladder.size()-1) + ".");
+//			return;		//no need to print the ladder
+//		}
+		
+		//if you actually have a word ladder
 		System.out.println("a " + (ladder.size() - 2) + "-rung word ladder exists between " + ladder.get(0) + " and " + ladder.get(ladder.size()-1) + ".");
 		for(int i = 0; i < ladder.size(); i++){
 			System.out.println(ladder.get(i));
