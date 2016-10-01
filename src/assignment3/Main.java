@@ -194,7 +194,7 @@ public class Main {
 				return;
 			}
 			else{	//start and end not one letter away so no word ladder
-				System.out.println("no word ladder can be found between " + start + " and " + end + ".");
+				System.out.println("no word ladder can be found between " + ladder.get(0) + " and " + ladder.get(1) + ".");
 				return;
 			}
 		}
