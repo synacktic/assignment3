@@ -6,9 +6,15 @@ Brian Sutherland
 bcs2433
 Fall 2016
 
-The testing goal was to ensure that each method within the DFS and BFS class worked correctly as individual units, as well as worked well as a whole.  Our methodology was to individually test each separate method within the DFS and BFS classes by feeding the methods required inputs and evaluating if the methods had the desired/expected outputs.  Therefore, we testing each module individually.  After we ensured that each individual module performed as expected, we moved onto testing the program as a whole.
+The testing goal was to ensure that each method within the DFS and BFS class worked correctly as individual units, 
+as well as worked well as a whole.  Our methodology was to individually test each separate method within the DFS
+and BFS classes by feeding the methods required inputs and evaluating if the methods had the desired/expected outputs.
+Therefore, we testing each module individually.  After we ensured that each individual module performed as expected,
+we moved onto testing the program as a whole.
 
-We used JUNIT for some of the test cases to ensure that our word ladders were not hopping more than one letter at a time from one word to the next.  For other test cases, we sent multiple variations of the two word input (the start and end word) to the getWordLadderDFS() and getWordLadderBFS() manually.
+We used JUNIT for some of the test cases to ensure that our word ladders were not hopping more than one letter at
+a time from one word to the next.  For other test cases, we sent multiple variations of the two word input (the 
+start and end word) to the getWordLadderDFS() and getWordLadderBFS() manually.
 
 We covered: (Note: these are only some of the many test cases we did)
 	start word:	end word:		expected output:			DFS:	BFS:
