@@ -58,6 +58,8 @@ public class Main {
 		// initialize your static variables or constants here.
 		// We will call this method before running our JUNIT tests.  So call it 
 		// only once at the start of main.
+		start = null;
+		end = null;
 	}
 	
 	
@@ -74,6 +76,9 @@ public class Main {
 			System.exit(0);;							//stop running the program with no further output
 		}
 		String word2 = keyboard.next().trim().toLowerCase();	//whitespace must be ignored
+		if (word2.equals("/quit")){
+			System.exit(0);;							//stop running the program with no further output
+		}
 		start = word1;		//set static variable
 		end = word2;		//set static variable	
 		wordLadder.add(word1);
